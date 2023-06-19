@@ -40,13 +40,11 @@ while (hits < 10)
     // Запрос координаты выстрела
     while (true)
     {
-
         Console.WriteLine("Введите координаты x и y: ");
         try
         {
-
             x = Convert.ToInt32(Console.ReadLine());
-            x = Convert.ToInt32(Console.ReadLine());
+            y = Convert.ToInt32(Console.ReadLine());
             // Проверяем что координаты в диапазоне от 0 до 9 включително
             if (x < 0 || x > 9 || y < 0 || y > 9)
                 throw new Exception("Координаты должны быть в диапазоне от от 0 до 9 включительно!");
@@ -58,7 +56,6 @@ while (hits < 10)
         }
     }
     Console.WriteLine("Введите координаты x и y: ");
-    
 
     // Обработка выстрела
     if (!(board[x, y] == -1 || board[x, y] == 0))
