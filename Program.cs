@@ -14,7 +14,8 @@ PlaceShip(3, board); // Корабль длиной 3 клетки
 PlaceShip(2, board); // Корабль длиной 2 клетки
 PlaceShip(1, board); // Корабль длиной 2 клетки
 
-
+int x = 0;
+int y = 0;
 
 int attempts = 0; // Количество попыток
 int hits = 0; // Количество попаданий
@@ -37,9 +38,27 @@ while (hits < 10)
     }
 
     // Запрос координаты выстрела
+    while (true)
+    {
+
+        Console.WriteLine("Введите координаты x и y: ");
+        try
+        {
+
+            x = Convert.ToInt32(Console.ReadLine());
+            x = Convert.ToInt32(Console.ReadLine());
+            // Проверяем что координаты в диапазоне от 0 до 9 включително
+            if (x < 0 || x > 9 || y < 0 || y > 9)
+                throw new Exception("Координаты должны быть в диапазоне от от 0 до 9 включительно!");
+            break; // Если координаты правлильные, выходим из цикла
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Ошибка: " + e.Message);
+        }
+    }
     Console.WriteLine("Введите координаты x и y: ");
-    int x = Convert.ToInt32(Console.ReadLine());
-    int y = Convert.ToInt32(Console.ReadLine());
+    
 
     // Обработка выстрела
     if (!(board[x, y] == -1 || board[x, y] == 0))
