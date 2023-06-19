@@ -42,7 +42,7 @@ while (hits < 10)
     int y = Convert.ToInt32(Console.ReadLine());
 
     // Обработка выстрела
-    if (board[x, y] == -1 || board[x, y] == 0)
+    if (!(board[x, y] == -1 || board[x, y] == 0))
     {
         Console.WriteLine("Попадание!");
         board[x, y] = -1; // Пометка попадания на поле игры
