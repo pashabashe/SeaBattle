@@ -8,14 +8,15 @@
 
 int[,] board = new int[10, 10]; // Создание двумерного массива для хранения поля игры
 
+int x,y;
+
 // Размещение кораблей на поле игры
 PlaceShip(4, board); // Корабль длиной 4 клетки
 PlaceShip(3, board); // Корабль длиной 3 клетки
 PlaceShip(2, board); // Корабль длиной 2 клетки
 PlaceShip(1, board); // Корабль длиной 2 клетки
 
-int x = 0;
-int y = 0;
+
 
 int attempts = 0; // Количество попыток
 int hits = 0; // Количество попаданий
@@ -81,12 +82,11 @@ static void PlaceShip(int size, int[,] board)
     bool horizontal = rand.Next(2) == 1;
 
     // Определение начальной позиции корабля
-    int x = 0;
-    int y = 0;
+    int x, y;
     while (true)
     {
-        x = rand.Next(10);
-        y = rand.Next(10);
+        x = rand.Next(10 - size);
+        y = rand.Next(10 - size);
         if (board[x, y] == 0) break; // Если клетка свободна, то корабль может быть размещен здесь
     }
 
