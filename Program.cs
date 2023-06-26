@@ -26,37 +26,40 @@ while (hits < 10)
 {
     // Вывод на экран текущего состояния поля игры
     Console.WriteLine("Battleship - ход " + (attempts + 1));
-    for (int i = 0; i < 10; i++)
+    for (int i = 1; i <= 10; i++)
     {
-        for (int j = 0; j < 10; j++)
+        for (int j = 1; j <= 10; j++)
         {
             string state = " ";
-            if (board[i, j] == -1) state = "*"; // Попадание
-            else if (board[i, j] == 0) state = "-"; // Промах
+            if (board[i - 1, j - 1] == -1) state = "*"; // Попадание
+            else if (board[i - 1, j - 1] == 0) state = "-"; // Промах
             Console.Write(state + " ");
         }
         Console.WriteLine();
     }
 
+
     // Запрос координаты выстрела
     while (true)
     {
-        Console.WriteLine("Введите координаты x и y: ");
+        Console.WriteLine("Введите координаты x и y (от 1 до 10): ");
         try
         {
             y = Convert.ToInt32(Console.ReadLine());
             x = Convert.ToInt32(Console.ReadLine());
-            // Проверяем что координаты в диапазоне от 0 до 9 включително
-            if (x < 0 || x > 9 || y < 0 || y > 9)
-                throw new Exception("Координаты должны быть в диапазоне от от 0 до 9 включительно!");
-            break; // Если координаты правлильные, выходим из цикла
+            // Проверяем что координаты в диапазоне от 1 до 10 включително
+            if (x < 1 || x > 10 || y < 1 || y > 10)
+                throw new Exception("Координаты должны быть в диапазоне от 1 до 10 включительно!");
+            x--; // Уменьшаем на 1, чтобы получить индекс в массиве
+            y--; // Уменьшаем на 1, чтобы получить индекс в массиве
+            break; // Если координаты правильные, выходим из цикла
         }
         catch (Exception e)
         {
             Console.WriteLine("Ошибка: " + e.Message);
         }
     }
-    Console.WriteLine("Введите координаты x и y: ");
+
 
     // Обработка выстрела
     if (!(board[x, y] == -1 || board[x, y] == 0))
