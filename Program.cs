@@ -32,7 +32,7 @@ while (hits < 10)
         {
             string state = "-";
             if (board[i - 1, j - 1] == -1) state = "*"; // Попадание
-            else if (board[i - 1, j - 1] == 0) state = "-"; // Промах
+            else if (board[i - 1, j - 1] == 0) state = "0"; // Промах
             Console.Write(state + " ");
         }
         Console.WriteLine();
