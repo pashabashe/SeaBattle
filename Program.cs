@@ -14,7 +14,7 @@ int x,y;
 PlaceShip(4, board); // Корабль длиной 4 клетки
 PlaceShip(3, board); // Корабль длиной 3 клетки
 PlaceShip(2, board); // Корабль длиной 2 клетки
-PlaceShip(1, board); // Корабль длиной 2 клетки
+PlaceShip(1, board); // Корабль длиной 1 клетки
 
 
 
