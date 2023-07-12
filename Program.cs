@@ -14,7 +14,7 @@ int x,y;
 PlaceShip(4, board); // Корабль длиной 4 клетки
 PlaceShip(3, board); // Корабль длиной 3 клетки
 PlaceShip(2, board); // Корабль длиной 2 клетки
-PlaceShip(1, board); // Корабль длиной 2 клетки
+PlaceShip(1, board); // Корабль длиной 1 клетки
 
 
 
@@ -31,8 +31,10 @@ while (hits < 10)
         for (int j = 1; j <= 10; j++)
         {
             string state = " ";
+            if (board[i - 1, j - 1] == 0) state = "-"; // Промах
+            if (board[i - 1, j - 1] == 1) state = "-"; // корабль
             if (board[i - 1, j - 1] == -1) state = "*"; // Попадание
-            else if (board[i - 1, j - 1] == 0) state = "-"; // Промах
+
             Console.Write(state + " ");
         }
         Console.WriteLine();
