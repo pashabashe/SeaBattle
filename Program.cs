@@ -8,7 +8,7 @@
 
 int[,] board = new int[10, 10]; // Создание двумерного массива для хранения поля игры
 
-int x,y;
+int x, y;
 
 // Размещение кораблей на поле игры
 PlaceShip(4, board); // Корабль длиной 4 клетки
@@ -31,8 +31,9 @@ while (hits < 10)
         for (int j = 1; j <= 10; j++)
         {
             string state = " ";
-            if (board[i - 1, j - 1] == 0) state = "-"; // Промах
+            if (board[i - 1, j - 1] == 9) state = "x"; // Промах
             if (board[i - 1, j - 1] == 1) state = "-"; // корабль
+            if (board[i - 1, j - 1] == 0) state = "-"; // пустая клетка
             if (board[i - 1, j - 1] == -1) state = "*"; // Попадание
 
             Console.Write(state + " ");
@@ -64,13 +65,17 @@ while (hits < 10)
 
 
     // Обработка выстрела
-    if (!(board[x, y] == -1 || board[x, y] == 0))
+    if (!(board[x, y] == -1 || board[x, y] == 0 || board[x, y] == 9))
     {
         Console.WriteLine("Попадание!");
         board[x, y] = -1; // Пометка попадания на поле игры
         hits++; // Увеличение счетчика попаданий
     }
-    else Console.WriteLine("Промах!");
+    else
+    {
+        Console.WriteLine("Промах!");
+        board[x, y] = 9;
+    }
 
     attempts++; // Увеличение количества попыток
 }
